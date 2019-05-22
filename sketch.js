@@ -90,7 +90,6 @@ function setup(){
 
 function draw(){
   background(imageBackground);
-  //background(192,192,192);
   
 	if(!gameOver) {
 		if(!gameStarted) {
@@ -230,7 +229,6 @@ function doGameStuff() {
 
       newEnemy.velocity.x = policemanSpeed;
     
-      //newEnemy.setDefaultCollider();
       newEnemy.setCollider("rectangle",0,0,30,30);
       enemies.add(newEnemy);
 
@@ -239,7 +237,7 @@ function doGameStuff() {
       // increase speed of policemans going by
       policemanSpeed = constrain(policemanSpeed - .2, MAX_POLICEMAN_SPEED, MIN_POLICEMAN_SPEED);
 
-      // increase frequency of police spawns to match using... map!
+      // increase frequency of police spawns to match using the map function 
       enemySpawnInterval = map(policemanSpeed, MIN_POLICEMAN_SPEED, MAX_POLICEMAN_SPEED, 10000, 3000);
     }
     if(leftOrRightPoliceman == 0){
@@ -252,7 +250,6 @@ function doGameStuff() {
 
       newEnemy.velocity.x = policemanSpeed * (-1);
 
-      //newEnemy.setDefaultCollider();
       newEnemy.setCollider("rectangle",0,0,30,30);
       enemies.add(newEnemy);
 
@@ -276,7 +273,6 @@ function doGameStuff() {
 
     newCoin.velocity.y = 3;
     
-    //newCoin.setDefaultCollider();
     newCoin.setCollider("circle",0,0,10);
 
     coins.add(newCoin);
@@ -297,7 +293,7 @@ function doGameStuff() {
 }
 
 
-function deleteEnemy(col1, col2) {
+function deleteEnemy(col1, col2){
   col2.remove();
   score = score + 1;
   titolScore.html("SCORE: " + score);
@@ -314,7 +310,7 @@ function getCoin(col1, col2){
   titolScore.html("SCORE: " + score);
 }
 
-function hitEnemy(col1, col2) {
+function hitEnemy(col1, col2){
   deathSound.play();
   gameOver = true;
   col1.remove(); //We destroy our player
